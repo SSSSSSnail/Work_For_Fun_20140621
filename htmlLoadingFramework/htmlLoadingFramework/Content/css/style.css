@@ -1,0 +1,21 @@
+div {
+    -webkit-user-select: none;
+}
+
+/* index page *//*
+
+#index_bg {
+    width: 1024px;
+    height: 768px;
+    background-image: url('../images/index_bg.png');
+}
+
+#dancers {
+    position: absolute;
+    left: 89px;
+    top: 54px;
+    width: 371px;
+    height: 687px;
+    background-image: url('../images/dancers.png');
+    display: none;
+}*/
