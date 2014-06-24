@@ -1,3 +1,110 @@
+var idtype = -1;
+var currentQuestion = 0;
+var answerNumberArray = [
+    [2, 2, 2, 2, 2, 3],
+    [2, 3, 4, 3, 3, 4]
+];
+
+
+$(document).on('pageinit', '#index',function () {
+    $('#sales_button').click(function () {
+        idtype = 0;
+        $.mobile.changePage('questionnaire.html', {transition: 'slide'});
+    });
+    $('#doctor_button').click(function () {
+        idtype = 1;
+        $.mobile.changePage('questionnaire.html', {transition: 'slide'});
+    });
+});
+
+$(document).on('pageinit', '#questionnaire',function () {
+    $('#back_to_index').click(function () {
+       alert('重新开始');
+    });
+
+    bindAction($('#main_content1'));
+    bindAction($('#main_content2'));
+
+    $('#prevent').click(function () {
+        switchLeftOrRight('right');
+    });
+    $('#next').click(function () {
+        switchLeftOrRight('left');
+    });
+
+    switchLeftOrRight('init');
+});
+
+function bindAction(selector) {
+    selector.on('swipeleft',function () {
+        switchLeftOrRight('left');
+    }).on('swiperight',function () {
+            switchLeftOrRight('right');
+        }).children('.question_answer_content').children().each(function (index) {
+            $(this).click(function () {
+                selector.children('.question_answer_content').find('.question_answer_checkbox').css({'background-image': 'url(images/checkbox_uncheck.png)'});
+                $(this).children('.question_answer_checkbox').css({'background-image': 'url(images/checkbox_checked.png)'});
+                alert('选中'+index);
+            });
+        });
+}
+
+function switchLeftOrRight(direction) {
+    var fromSelector;
+    var toSelector;
+    var fromDirection;
+    var toDirection;
+    if (direction == 'left') {
+        fromDirection = 'left';
+        toDirection = 'right';
+        if (currentQuestion == 5) {
+            alert('已经是最后一题了');
+            return;
+        }
+        currentQuestion ++;
+    } else if (direction == 'right') {
+        fromDirection = 'right';
+        toDirection = 'left';
+        if (currentQuestion == 0) {
+            alert('已经是第一题了');
+            return;
+        }
+        currentQuestion --;
+    } else {
+        //init
+    }
+
+    var answerNumber = answerNumberArray[idtype][currentQuestion];
+    if (currentQuestion % 2 == 0) {
+        fromSelector = $('#main_content2');
+        toSelector = $('#main_content1');
+    } else {
+        fromSelector = $('#main_content1');
+        toSelector = $('#main_content2');
+    }
+    toSelector.children('.question_answer_content').children().each(function (index) {
+        $(this).removeClass('question_answer_bg');
+        $(this).removeClass('question_answer_bg_last');
+        if (index < answerNumber) {
+            var answerClass;
+            if (index == answerNumber - 1) {
+                answerClass = 'question_answer_bg_last';
+            } else {
+                answerClass = 'question_answer_bg';
+            }
+            $(this).addClass(answerClass);
+            $(this).show().children('.question_answer').css({'background-image': 'url(images/question_answer_' + idtype + '_' + currentQuestion + '_' + index + '.png)'});
+        } else {
+            $(this).hide();
+        }
+    });
+    toSelector.find('.question_title').css({'background-image': 'url(images/question_title_' + idtype + '_' + currentQuestion + '.png)'});
+    if (direction != 'init') {
+        fromSelector.hide( 'drop', { direction: fromDirection });
+        toSelector.show( 'drop', { direction: toDirection });
+    }
+}
+
 /*var rightSection1CellSelectedIndex = -1;
 var rightSection2CellSelectedIndex = -1;
 var originalRightSection2CellSelectedIndex = -1;

@@ -2,7 +2,7 @@ div {
     -webkit-user-select: none;
 }
 
-/* index page *//*
+/* index page */
 
 #index_bg {
     width: 1024px;
@@ -10,7 +10,115 @@ div {
     background-image: url('../images/index_bg.png');
 }
 
-#dancers {
+#sales_button {
+    position: absolute;
+    left: 54px;
+    top: 591px;
+    width: 405px;
+    height: 171px;
+}
+
+#doctor_button {
+    position: absolute;
+    left: 568px;
+    top: 591px;
+    width: 405px;
+    height: 171px;
+}
+
+/* questionnaire page */
+
+#question_bg {
+    width: 1024px;
+    height: 768px;
+    background-image: url('../images/question_bg.png');
+}
+
+#back_to_index {
+    position: absolute;
+    left: 786px;
+    top: 125px;
+    width: 72px;
+    height: 43px;
+}
+
+#prevent {
+    position: absolute;
+    left: 0;
+    top: 347px;
+    width: 63px;
+    height: 122px;
+}
+
+#next {
+    position: absolute;
+    left: 961px;
+    top: 347px;
+    width: 63px;
+    height: 122px;
+}
+
+#main_content1 {
+    position: absolute;
+    left: 145px;
+    top: 126px;
+    width: 728px;
+    height: 597px;
+}
+
+#main_content2 {
+    position: absolute;
+    left: 145px;
+    top: 126px;
+    width: 728px;
+    height: 597px;
+    display: none;
+}
+
+.question_title_bg {
+    overflow: hidden;
+    width: 728px;
+    height: 301px;
+    background-image: url('../images/question_title_bg.png');
+}
+
+.question_title {
+    margin-top: 87px;
+    margin-left: 28px;
+    width: 673px;
+    height: 150px;
+}
+
+.question_answer_bg {
+    overflow: hidden;
+    width: 728px;
+    height: 74px;
+    background-image: url('../images/question_answer_bg.png');
+}
+
+.question_answer_bg_last {
+    overflow: hidden;
+    width: 728px;
+    height: 119px;
+    background-image: url('../images/question_answer_bg_last.png');
+}
+
+.question_answer_checkbox {
+    margin-top: 26px;
+    margin-left: 35px;
+    width: 26px;
+    height: 26px;
+    background-image: url('../images/checkbox_uncheck.png');
+    float: left;
+}
+
+.question_answer {
+    margin-top: 2px;
+    margin-left: 96px;
+    width: 632px;
+    height: 70px;
+}
+/*#dancers {
     position: absolute;
     left: 89px;
     top: 54px;
