@@ -202,6 +202,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Snail;
 				TargetAttributes = {
+					071399E71876F0B3007414D1 = {
+						DevelopmentTeam = PMEG45YRP4;
+					};
 					07139A081876F0B3007414D1 = {
 						TestTargetID = 071399E71876F0B3007414D1;
 					};
@@ -389,7 +392,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "htmlLoadingFramework/htmlLoadingFramework-Prefix.pch";
 				INFOPLIST_FILE = "htmlLoadingFramework/htmlLoadingFramework-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
@@ -406,7 +409,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "htmlLoadingFramework/htmlLoadingFramework-Prefix.pch";
 				INFOPLIST_FILE = "htmlLoadingFramework/htmlLoadingFramework-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
