@@ -140,6 +140,14 @@ div {
     height: 768px;
 }
 
+#kmBackButton {
+    position: absolute;
+    left: 34px;
+    top: 26px;
+    width: 267px;
+    height: 105px;
+}
+
 .message1_km1 {
     position: absolute;
     left: 411px;
@@ -199,12 +207,41 @@ div {
     width: 468px;
     height: 67px;
 }
-/*#dancers {
+
+#simpleButton {
     position: absolute;
-    left: 89px;
-    top: 54px;
-    width: 371px;
-    height: 687px;
-    background-image: url('../images/dancers.png');
+    left: 821px;
+    top: 608px;
+    width: 155px;
+    height: 50px;
+}
+
+#detailButton {
+    position: absolute;
+    left: 821px;
+    top: 680px;
+    width: 155px;
+    height: 50px;
+}
+
+/* showPPT page */
+
+#showPPT_bg {
+    width: 1024px;
+    height: 768px;
+}
+
+#backBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1024px;
+    height: 59px;
+    background-image: url('../images/backBar.png');
     display: none;
-}*/
+}
+
+#backButton {
+    width: 400px;
+    height: 59px;
+}

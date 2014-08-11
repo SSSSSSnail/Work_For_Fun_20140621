@@ -21,24 +21,43 @@ var kmbgArray = [2, 2, 2, 2, 2, 2, 3, 2, 1, 1, 1];
 
 var keyMessage;
 
+var pptSimpleArray = [
+    [3, 2],
+    [1, 2],
+    [2, 3],
+    [1, 2],
+    [3, 2],
+    [1, 1],
+    [2, 3],
+    [2, 2],
+    [2],
+    [2],
+    [1]
+];
+
+var currentPPTPage;
+
 $(document).on('pageinit', '#index',function () {
     $('#sales_button').click(function () {
+        currentQuestion = 0;
+        path = -1;
+
         idtype = 0;
         answerSelectedArray = [-1, -1, -1, -1, -1, -1];
-        /*$.mobile.changePage('questionnaire.html', {transition: 'slide'});*/
-        $.mobile.changePage('keyMessage.html', {transition: 'slide'});
+        $.mobile.changePage('questionnaire.html', {transition: 'slide'});
+        /*$.mobile.changePage('keyMessage.html', {transition: 'slide'});*/
     });
     $('#doctor_button').click(function () {
+        currentQuestion = 0;
+        path = -1;
+
         idtype = 1;
         answerSelectedArray = [-1, -1, -1, -1, -1, [false, false, false, false]];
         doctorAnswerMapping = [-1, -1, -1, -1, -1, -1];
 
-        /*$.mobile.changePage('questionnaire.html', {transition: 'slide'});*/
-        $.mobile.changePage('keyMessage.html', {transition: 'slide'});
+        $.mobile.changePage('questionnaire.html', {transition: 'slide'});
+        /*$.mobile.changePage('keyMessage.html', {transition: 'slide'});*/
     });
-    currentQuestion = 0;
-    path = -1;
-    keyMessage = -1;
 });
 
 $(document).on('pageinit', '#questionnaire',function () {
@@ -226,8 +245,30 @@ $(document).on('pageinit', '#showPath',function () {
 });
 
 $(document).on('pageinit', '#keyMessage',function () {
-    path = 6;
+
+    keyMessage = -1;
+    currentPPTPage = 0;
     $('#keyMessage_bg').css({'background-image': 'url(images/kmbg'+ kmbgArray[path] +'.png)'});
+
+    $('#kmBackButton').click(function () {
+        $.mobile.changePage('index.html');
+    });
+
+    $('#simpleButton').click(function () {
+        if (keyMessage == -1) {
+            alert('请选择！');
+        } else {
+            if (keyMessage == 3) {
+
+            } else {
+                $.mobile.changePage('showPPT.html', {transition: 'slideup'});
+            }
+        }
+    });
+
+    $('#detailButton').click(function () {
+        //TODO: detail
+    });
 
     for (var i = 1; i < 4; i++) {
         $('#message'+ i).addClass('message'+i+'_km'+ kmbgArray[path]).css({'background-image': 'url(images/message'+ i +'_' + path + '_unselected.png)'}).on('click', {forIndex: i}, function (param) {
@@ -240,4 +281,28 @@ $(document).on('pageinit', '#keyMessage',function () {
             keyMessage = param.data.forIndex;
         });
     }
+});
+
+$(document).on('pageinit', '#showPPT',function () {
+    var showPPTObject = $(this);
+    showPPTObject.find('#showPPT_bg').css({'background-image': 'url(images/ppts/simple/p'+ path +'m'+ keyMessage +'_'+ currentPPTPage +'.png)'}).on('swipeleft',function () {
+        if(!$(this).is(":animated")){
+            if (currentPPTPage < pptSimpleArray[path][keyMessage - 1] - 1) {
+                currentPPTPage++;
+                $.mobile.changePage('showPPT.html', {transition: 'slide', allowSamePageTransition: true, reloadPage: true});
+            }
+        }
+    }).on('swiperight',function () {
+            if(!$(this).is(":animated")){
+                if (currentPPTPage > 0) {
+                    currentPPTPage--;
+                    $.mobile.changePage('showPPT.html', {transition: 'slide' , allowSamePageTransition: true, reverse: true, reloadPage: true});
+                }
+            }
+        }).click(function () {
+            showPPTObject.find('#backBar').toggle( 'drop', { direction: 'up' });
+        });
+    showPPTObject.find('#backButton').click(function () {
+        $.mobile.changePage('keyMessage.html', {transition: 'slideup', reverse: true});
+    });
 });
